@@ -25,4 +25,4 @@ jobs:
       
       - name: Run Python file
         run: |
-          python deployment_scripts/qrcode.py
+          python deployment_scripts/generate_qrcode.py
