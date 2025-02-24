@@ -1,6 +1,11 @@
-variable bucket_name  {
+variable web_display_bucket_name  {
     type = string
-    default = "web-displays-plant-database"
+    default = "web-displays-plant-bucket"
+}
+
+variable generated_qr_code_storage_bucket_name  {
+    type = string
+    default = "qr-codes-bucket"
 }
 
 variable dynamodb_name  {
