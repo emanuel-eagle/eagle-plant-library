@@ -5,7 +5,7 @@ variable web_display_bucket_name  {
 
 variable generated_qr_code_storage_bucket_name  {
     type = string
-    default = "qr-codes-bucket-plant-database"
+    default = "qr-codes-plant-database-bucket"
 }
 
 variable dynamodb_name  {
