@@ -2,16 +2,16 @@ name: 'Generate QR Code'
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 jobs:
   run-python:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Repo
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
