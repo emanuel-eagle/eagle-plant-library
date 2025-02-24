@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  run-python:
+  generate-qr-code:
     runs-on: ubuntu-latest
 
     steps:
