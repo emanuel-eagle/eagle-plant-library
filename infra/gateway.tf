@@ -5,9 +5,9 @@ resource "aws_api_gateway_rest_api" "api_gateway_plant_database" {
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway_plant_database.id
 
-  depends_on = [
-    aws_api_gateway_integration.example_get
-  ]
+#   depends_on = [
+#     aws_api_gateway_integration.example_get
+#   ]
 
   lifecycle {
     create_before_destroy = true
