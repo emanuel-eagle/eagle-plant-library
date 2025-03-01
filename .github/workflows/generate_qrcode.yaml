@@ -12,7 +12,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-
+        env:
+          QR_CODES_S3_BUCKET_NAME: ${{ QR_CODES_S3_BUCKET_NAME }}
+          
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -21,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install qrcode boto3 pillow 
+          pip install qrcode boto3 io pillow 
       
       - name: Run Python file
         run: |
