@@ -16,6 +16,7 @@ resource "aws_api_gateway_deployment" "api_gateway_deployment" {
 
 resource "aws_api_gateway_usage_plan" "api_gateway_plant_database_usage_plan" {
   name = "${var.apigateway_name}-usage-plan"
+  
 
   api_stages {
     api_id = aws_api_gateway_rest_api.api_gateway_plant_database.id
@@ -48,6 +49,7 @@ resource "aws_api_gateway_method" "api_gateway_method" {
   resource_id   = aws_api_gateway_resource.presigned_url_resource.id
   http_method   = "GET"
   authorization = "NONE"
+  api_key_required = false  
 }
 
 resource "aws_api_gateway_resource" "presigned_url_resource" {
