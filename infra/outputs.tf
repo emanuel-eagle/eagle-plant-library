@@ -3,9 +3,9 @@
 #   sensitive = true
 # }
 
-# output "api_url" {
-#   value = "${aws_api_gateway_stage.main.invoke_url}/items"
-# }
+output "api_gateway_url" {
+  value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/${aws_api_gateway_resource.presigned_url_resource.path_part}"
+}
 
 output "website_display_s3_bucket_url" {
   value = aws_s3_bucket.web_display_bucket.bucket_domain_name
