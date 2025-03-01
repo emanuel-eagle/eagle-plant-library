@@ -3,5 +3,5 @@ import boto3
 
 url = "www.google.com"
 img = qrcode.make(rf"https://{url}")
-print(url)
+print(type(img))
 
