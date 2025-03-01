@@ -4,7 +4,7 @@
 # }
 
 output "api_gateway_url" {
-  value = "${aws_api_gateway_deployment.api_gateway_deployment.invoke_url}/dev/${aws_api_gateway_resource.presigned_url_resource.path_part}"
+  value = "${aws_api_gateway_deployment.api_gateway_deployment.invoke_url}dev/${aws_api_gateway_resource.presigned_url_resource.path_part}"
 }
 
 output "website_display_s3_bucket_url" {
