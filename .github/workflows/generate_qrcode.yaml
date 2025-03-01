@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install qrcode boto3 io pillow 
+          pip install qrcode boto3 pillow 
       
       - name: Run Python file
         env:
