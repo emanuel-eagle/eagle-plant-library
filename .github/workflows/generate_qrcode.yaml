@@ -27,6 +27,7 @@ jobs:
       - name: Run Python file
         env:
           QR_CODES_S3_BUCKET_NAME: ${{ secrets.QR_CODES_S3_BUCKET_NAME }}
-          TEST_VAR: ${{}}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           python deployment_scripts/generate_qrcode.py
