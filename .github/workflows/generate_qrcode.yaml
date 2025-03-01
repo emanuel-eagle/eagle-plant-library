@@ -29,5 +29,6 @@ jobs:
           QR_CODES_S3_BUCKET_NAME: ${{ secrets.QR_CODES_S3_BUCKET_NAME }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          API_GATEWAY_URL: ${{ secrets.API_GATEWAY_URL }}
         run: |
           python deployment_scripts/generate_qrcode.py
