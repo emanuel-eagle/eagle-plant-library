@@ -40,7 +40,7 @@ resource "aws_api_gateway_api_key" "api_gateway_plant_database_api_key" {
 resource "aws_api_gateway_stage" "api_gateway_plant_database_stage" {
   deployment_id = aws_api_gateway_deployment.api_gateway_deployment.id
   rest_api_id   = aws_api_gateway_rest_api.api_gateway_plant_database.id
-  stage_name    = "prod"
+  stage_name    = "dev"
 }
 
 resource "aws_api_gateway_method" "api_gateway_method" {
