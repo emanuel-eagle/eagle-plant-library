@@ -4,9 +4,8 @@ import qrcode
 import os
 
 QR_CODES_S3_BUCKET_NAME = os.environ["QR_CODES_S3_BUCKET_NAME"]
-TEST_VAR = os.environ["TEST_VAR"]
-
-print(TEST_VAR)
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 
 url = "www.google.com"
 img = qrcode.make(rf"https://{url}")
@@ -14,15 +13,15 @@ img_byte_arr = io.BytesIO()
 img.save(img_byte_arr, format='PNG')
 img_byte_arr.seek(0)  # Move to the beginning of BytesIO object
 
-# s3_client = boto3.client('s3',
-#     aws_access_key_id='YOUR_ACCESS_KEY',
-#     aws_secret_access_key='YOUR_SECRET_KEY',
-#     region_name='YOUR_REGION'
-# )
+s3_client = boto3.client('s3',
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    region_name='us-east-2'
+)
 
-# s3_client.upload_fileobj(
-#     img_byte_arr,
-#     bucket_name,
-#     object_key,
-#     ExtraArgs={'ContentType': 'image/png'}
-# )
+s3_client.upload_fileobj(
+    img_byte_arr,
+    QR_CODES_S3_BUCKET_NAME,
+    url,
+    ExtraArgs={'ContentType': 'image/png'}
+)
