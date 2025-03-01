@@ -4,8 +4,9 @@ import qrcode
 import os
 
 QR_CODES_S3_BUCKET_NAME = os.environ["QR_CODES_S3_BUCKET_NAME"]
+TEST_VAR = os.environ["TEST_VAR"]
 
-print(QR_CODES_S3_BUCKET_NAME)
+print(TEST_VAR)
 
 url = "www.google.com"
 img = qrcode.make(rf"https://{url}")
