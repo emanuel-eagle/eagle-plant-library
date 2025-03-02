@@ -24,7 +24,7 @@ resource "aws_api_gateway_usage_plan" "api_gateway_plant_database_usage_plan" {
   }
 
   quota_settings {
-    limit  = 10
+    limit  = 100
     period = "DAY"
   }
 
@@ -44,8 +44,8 @@ resource "aws_api_gateway_method" "api_gateway_method" {
   rest_api_id   = aws_api_gateway_rest_api.api_gateway_plant_database.id
   resource_id   = aws_api_gateway_resource.presigned_url_resource.id
   http_method   = "GET"
-  authorization = "NONE"
-  api_key_required = true  
+  authorization = "CUSTOM"
+  authorizer_id = aws_api_gateway_authorizer.api_key_authorizer.id
 }
 
 resource "aws_api_gateway_resource" "presigned_url_resource" {
@@ -72,4 +72,13 @@ resource "aws_api_gateway_usage_plan_key" "api_gateway_key_to_usage_plan" {
   key_id        = aws_api_gateway_api_key.plant_database_api_key.id
   key_type      = "API_KEY"
   usage_plan_id = aws_api_gateway_usage_plan.api_gateway_plant_database_usage_plan.id
+}
+
+resource "aws_api_gateway_authorizer" "api_key_authorizer" {
+  name                   = "api-key-query-param-authorizer"
+  rest_api_id            = aws_api_gateway_rest_api.api_gateway_plant_database.id
+  authorizer_uri         = aws_lambda_function.authorizer.invoke_arn
+  authorizer_credentials = aws_iam_role.invocation_role.arn
+  type                   = "REQUEST"
+  identity_source        = "method.request.querystring.apikey"
 }
