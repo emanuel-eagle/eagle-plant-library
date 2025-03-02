@@ -2,7 +2,7 @@ name: 'Generate QR Code'
 on:
   push:
     paths:
-      - 'plant_pages/**'
+      - 'plant_page_templates/**'
 
 jobs:
   generate-qr-code:
