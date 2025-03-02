@@ -17,3 +17,11 @@ variable apigateway_name  {
     type = string
     default = "api-gateway-plant-database"
 }
+
+variable region  {
+    type = string
+}
+
+variable account_id {
+    type = string
+}

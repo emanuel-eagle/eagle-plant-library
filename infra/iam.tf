@@ -82,9 +82,9 @@ resource "aws_lambda_permission" "api_gateway_lambda" {
 }
 
 resource "aws_lambda_permission" "api_gateway_lambda_authorizer" {
-  statement_id  = "AllowExecutionFromAPIGateway"
+  statement_id  = "AllowAPIGatewayInvokeAuthorizer"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.authorizer.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn = "${aws_api_gateway_rest_api.api_gateway_plant_database.execution_arn}/*"
+  source_arn = "arn:aws:execute-api:${var.region}:${var.account_id}:${aws_api_gateway_rest_api.api_gateway_plant_database.id}/*"
 }
