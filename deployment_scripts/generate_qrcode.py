@@ -10,7 +10,8 @@ AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 URL = os.environ["API_GATEWAY_URL"]
 PARAMETERS = os.environ["PARAMETERS"]
 crafted_url = f"{URL}?filename={PARAMETERS}"
-image_name = f"api_gateway_qrcode_{PARAMETERS.replace(".txt", "")}.png"
+file_ext_stripped = PARAMETERS.replace(".txt", "")
+image_name = f"api_gateway_qrcode_{file_ext_stripped}.png"
 img = qrcode.make(crafted_url)
 img_byte_arr = io.BytesIO()
 img.save(img_byte_arr, format='PNG')
