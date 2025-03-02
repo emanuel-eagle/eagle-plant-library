@@ -58,9 +58,9 @@ resource "aws_iam_policy" "lambda_s3_policy" {
         Resource = "arn:aws:logs:*:*:*"
       },
       {
-        Action = ["apigateway:GET"],
-        Effect = "Allow",
-        Resource = ["*"]
+        Action = ["apigateway:GET"]
+        Effect = "Allow"
+        Resource = "arn:aws:apigateway:*::/apikeys/*"
       }
     ]
   })
