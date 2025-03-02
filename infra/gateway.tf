@@ -53,6 +53,9 @@ resource "aws_api_gateway_method" "api_gateway_method" {
   http_method   = "GET"
   api_key_required = false 
   authorization = "NONE"
+  request_parameters = {
+    "method.request.querystring.filename" = true
+  }
 }
 
 resource "aws_api_gateway_resource" "presigned_url_resource" {
@@ -69,4 +72,7 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.presigned_url_lambda.invoke_arn
+  request_parameters = {
+    "method.request.querystring.filename" = true
+  }
 }

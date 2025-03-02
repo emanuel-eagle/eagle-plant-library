@@ -10,7 +10,6 @@ resource "aws_lambda_function" "presigned_url_lambda" {
   environment {
     variables = {
       BUCKET_NAME = aws_s3_bucket.web_display_bucket.bucket
-      OBJECT_KEY  = "test.txt" 
     }
   }
 }
