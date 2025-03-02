@@ -1,9 +1,9 @@
 name: 'Generate QR Code'
 on:
   push:
-    branches:
-      - master
-  pull_request:
+    paths:
+      - 'plant_pages/**'
+
 
 jobs:
   generate-qr-code:
@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-
 
       - name: Set up Python
         uses: actions/setup-python@v5

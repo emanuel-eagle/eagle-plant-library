@@ -8,13 +8,15 @@ QR_CODES_S3_BUCKET_NAME = os.environ["QR_CODES_S3_BUCKET_NAME"]
 AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 URL = os.environ["API_GATEWAY_URL"]
-PARAMETERS = os.environ["PARAMETERS"]
-crafted_url = f"{URL}?filename={PARAMETERS}"
-file_ext_stripped = PARAMETERS.replace(".txt", "")
-image_name = f"api_gateway_qrcode_{file_ext_stripped}.png"
-img = qrcode.make(crafted_url)
-img_byte_arr = io.BytesIO()
-img.save(img_byte_arr, format='PNG')
-img_byte_arr.seek(0)
-s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, region_name='us-east-2')
-s3_client.upload_fileobj(img_byte_arr, QR_CODES_S3_BUCKET_NAME, image_name, ExtraArgs={'ContentType': 'image/png'})
+
+files = os.listdir("plant_pages")
+
+# crafted_url = f"{URL}?filename={PARAMETERS}"
+# file_ext_stripped = PARAMETERS.replace(".html", "")
+# image_name = f"api_gateway_qrcode_{file_ext_stripped}.png"
+# img = qrcode.make(crafted_url)
+# img_byte_arr = io.BytesIO()
+# img.save(img_byte_arr, format='PNG')
+# img_byte_arr.seek(0)
+# s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, region_name='us-east-2')
+# s3_client.upload_fileobj(img_byte_arr, QR_CODES_S3_BUCKET_NAME, image_name, ExtraArgs={'ContentType': 'image/png'})
