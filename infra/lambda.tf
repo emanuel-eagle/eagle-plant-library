@@ -17,7 +17,7 @@ resource "aws_lambda_function" "presigned_url_lambda" {
 
 # Lambda function
 resource "aws_lambda_function" "authorizer" {
-  filename      = "authorizer.zip" 
+  filename      = "lambda_function_authorizer.zip" 
   function_name = "authorizer"
   role          = aws_iam_role.lambda_role.arn
   handler       = "authorizer.lambda_handler"
