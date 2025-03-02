@@ -19,7 +19,7 @@ AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 URL = os.environ["API_GATEWAY_URL"]
 
-files = os.listdir("plant_pages")
+files = os.listdir("plant_page_templates")
 
 [push_qr_code_to_s3(file) for file in files]
 
