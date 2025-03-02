@@ -1,12 +1,12 @@
 # Eagle Plant Library
 
 ## Table of Contents
-[Introduction](#introduction)
-[User Experience](#user-experience)
-[Backend](#backend)
-[Hardware](#hardware)
-[How to Add a New Plant](#how-to-add-a-new-plant)
-[How to User for Your Own Garden](#how-to-use-this-project-for-your-own-garden)
+[Introduction](#introduction)</br>
+[User Experience](#user-experience)</br>
+[Backend](#backend)</br>
+[Hardware](#hardware)</br>
+[How to Add a New Plant](#how-to-add-a-new-plant)</br>
+[How to User for Your Own Garden](#how-to-use-this-project-for-your-own-garden)</br>
 
 ## Introduction
 
