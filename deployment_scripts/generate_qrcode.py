@@ -12,7 +12,7 @@ API_KEY = os.environ["API_KEY"]
 
 crafted_url = URL+"?api_key="+API_KEY
 
-img = qrcode.make(URL)
+img = qrcode.make(crafted_url)
 img_byte_arr = io.BytesIO()
 img.save(img_byte_arr, format='PNG')
 img_byte_arr.seek(0)
