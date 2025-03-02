@@ -1,5 +1,13 @@
 # Eagle Plant Library
 
+## Table of Contents
+[Introduction](#introduction)
+[User Experience](#user-experience)
+[Backend](#backend)
+[Hardware](#hardware)
+[How to Add a New Plant](#how-to-add-a-new-plant)
+[How to User for Your Own Garden](#how-to-use-this-project-for-your-own-garden)
+
 ## Introduction
 
 It can be very difficult to track the various watering, lighting, or other needs that all my plants require. I figured that there must be a way that technology can play a more robust role in this problem than just setting reminders and doing ad-hoc google searches. I recently watched a video of a husband that QR coded his wife's christmas decorations, these codes told her what was in each box. After watching this video, I realized I could apply a very similar methodology to my plant problem. 
