@@ -1,3 +1,8 @@
+variable web_display_bucket_name_templates  {
+    type = string
+    default = "web-displays-plant-bucket_templates"
+}
+
 variable web_display_bucket_name  {
     type = string
     default = "web-displays-plant-bucket"

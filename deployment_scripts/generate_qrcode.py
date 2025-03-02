@@ -3,7 +3,7 @@ import io
 import qrcode
 import os
 
-def push_html_to_s3(filename):
+def push_qr_code_to_s3(filename):
     crafted_url = f"{URL}?filename={filename}"
     file_ext_stripped = filename.replace(".html", "")
     image_name = f"api_gateway_qrcode_{file_ext_stripped}.png"
@@ -21,5 +21,5 @@ URL = os.environ["API_GATEWAY_URL"]
 
 files = os.listdir("plant_pages")
 
-[push_html_to_s3(file) for file in files]
+[push_qr_code_to_s3(file) for file in files]
 
