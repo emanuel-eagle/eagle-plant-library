@@ -9,6 +9,13 @@ resource "aws_api_gateway_deployment" "api_gateway_deployment" {
     aws_api_gateway_integration.lambda_integration
   ]
 
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_integration.lambda_integration,
+      aws_api_gateway_method.api_gateway_method
+    ]))
+  }
+
   lifecycle {
     create_before_destroy = true
   }
