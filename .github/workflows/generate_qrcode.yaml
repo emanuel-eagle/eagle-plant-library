@@ -4,7 +4,6 @@ on:
     paths:
       - 'plant_pages/**'
 
-
 jobs:
   generate-qr-code:
     runs-on: ubuntu-latest
