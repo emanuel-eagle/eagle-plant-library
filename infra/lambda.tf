@@ -14,14 +14,3 @@ resource "aws_lambda_function" "presigned_url_lambda" {
     }
   }
 }
-
-# Lambda function
-resource "aws_lambda_function" "authorizer" {
-  filename      = "lambda_function_authorizer.zip" 
-  function_name = "authorizer"
-  role          = aws_iam_role.lambda_role.arn
-  handler       = "authorizer.lambda_handler"
-  runtime       = "python3.11"
-  timeout       = 10
-  source_code_hash = data.archive_file.lambda_authorizer_zip.output_base64sha256
-}

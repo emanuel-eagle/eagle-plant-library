@@ -15,23 +15,6 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
-resource "aws_iam_role" "authorizer_invocation_role" {
-  name = "api_gateway_authorizer_invocation"
-  
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "apigateway.amazonaws.com"
-        }
-      }
-    ]
-  })
-}
-
 # IAM Policy for Lambda to access S3
 resource "aws_iam_policy" "lambda_s3_policy" {
   name        = "s3_presigned_url_lambda_policy"
@@ -79,12 +62,4 @@ resource "aws_lambda_permission" "api_gateway_lambda" {
   function_name = aws_lambda_function.presigned_url_lambda.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn = "${aws_api_gateway_rest_api.api_gateway_plant_database.execution_arn}/*"
-}
-
-resource "aws_lambda_permission" "api_gateway_lambda_authorizer" {
-  statement_id  = "AllowAPIGatewayInvokeAuthorizer"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.authorizer.function_name
-  principal     = "apigateway.amazonaws.com"
-  source_arn = "arn:aws:execute-api:${var.region}:${var.account_id}:${aws_api_gateway_rest_api.api_gateway_plant_database.id}/*"
 }
