@@ -1,5 +1,6 @@
 output "api_key_value" {
   value     = aws_api_gateway_api_key.plant_database_api_key.value
+  sensitive = true
 }
 
 output "api_gateway_url" {
