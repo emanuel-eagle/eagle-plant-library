@@ -30,5 +30,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           API_GATEWAY_URL: ${{ secrets.API_GATEWAY_URL }}
+          API_KEY: ${{ secrets.API_KEY }}
         run: |
           python deployment_scripts/generate_qrcode.py
