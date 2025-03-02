@@ -73,6 +73,6 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.presigned_url_lambda.invoke_arn
   request_parameters = {
-    "method.request.querystring.filename" = true
+    "integration.request.querystring.filename" = "method.request.querystring.filename"
   }
 }
