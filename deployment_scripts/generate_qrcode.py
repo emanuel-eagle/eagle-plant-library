@@ -11,7 +11,7 @@ URL = os.environ["API_GATEWAY_URL"]
 
 files = os.listdir("plant_pages")
 
-print(files)
+print(f"Files: {files}")
 
 # crafted_url = f"{URL}?filename={PARAMETERS}"
 # file_ext_stripped = PARAMETERS.replace(".html", "")
