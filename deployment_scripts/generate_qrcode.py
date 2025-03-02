@@ -10,10 +10,10 @@ AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 URL = os.environ["API_GATEWAY_URL"]
 PARAMETERS = os.environ["PARAMETERS"]
 crafted_url = f"{URL}?filename={PARAMETERS}"
-
+image_name = f"api_gateway_qrcode_{PARAMETERS.replace(".txt", "")}.png"
 img = qrcode.make(crafted_url)
 img_byte_arr = io.BytesIO()
 img.save(img_byte_arr, format='PNG')
 img_byte_arr.seek(0)
 s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, region_name='us-east-2')
-s3_client.upload_fileobj(img_byte_arr, QR_CODES_S3_BUCKET_NAME, f"api_gateway_qrcode_{PARAMETERS}.png", ExtraArgs={'ContentType': 'image/png'})
+s3_client.upload_fileobj(img_byte_arr, QR_CODES_S3_BUCKET_NAME, image_name, ExtraArgs={'ContentType': 'image/png'})
