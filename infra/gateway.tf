@@ -45,7 +45,7 @@ resource "aws_api_gateway_method" "api_gateway_method" {
   resource_id   = aws_api_gateway_resource.presigned_url_resource.id
   http_method   = "GET"
   authorization = "NONE"
-  api_key_required = false  
+  api_key_required = true  
 }
 
 resource "aws_api_gateway_resource" "presigned_url_resource" {
@@ -54,7 +54,6 @@ resource "aws_api_gateway_resource" "presigned_url_resource" {
   path_part   = "get-s3-object"
 }
 
-# Create a mock integration
 resource "aws_api_gateway_integration" "lambda_integration" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway_plant_database.id
   resource_id = aws_api_gateway_resource.presigned_url_resource.id
@@ -63,4 +62,14 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.presigned_url_lambda.invoke_arn
+}
+
+resource "aws_api_gateway_api_key" "plant_database_api_key" {
+  name = "plant-database-api-key"
+}
+
+resource "aws_api_gateway_usage_plan_key" "api_gateway_key_to_usage_plan" {
+  key_id        = aws_api_gateway_api_key.plant_database_api_key.id
+  key_type      = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.api_gateway_plant_database_usage_plan.id
 }
