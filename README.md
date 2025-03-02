@@ -1,2 +1,10 @@
 # Eagle Plant Library
 
+## Introduction
+
+It can be very difficult to track the various watering, lighting, or other needs that all my plants require. I figured that there must be a way that technology can play a more robust role in this problem than just setting reminders and doing ad-hoc google searches. I recently watched a video of a husband that QR coded his wife's christmas decorations, these codes told her what was in each box. After watching this video, I realized I could apply a very similar methodology to my plant problem. 
+
+## User Experience
+
+As with any technology, it's important to prioritize the user experience. Your backend and functionality and be the most robust system ever, but if your UI is slow, nobody cares. In this project, it is incredibly easy for the user to get what they need. They simply walk up to any plant(s), scan the QR code attached to the pot and a webpage loads on their phone with information specific to that plant. To enable this simple experience, I set generated QR codes with a domain URL encoded into them that directs them to an API Gateway resource in AWS. The QR Code also contains URL encoded data that identifies the specific plant that code is associated with. Once they reach the API Gateway, they are forwarded to an AWS Lambda, that takes in the URL encoded data and gives the user a pre-signed URL and automatically redirects the user. Upon redirect, the user is sent to a pre generated static website that hosts the data specific to that plant. The redirect URL goes to a AWS S3 bucket object, which is configured to act as a static website. Which means, when the user is redirected to that file, the file acts as a webpage, allowing them to scroll around and see sensor data in near real time, specific to the plant they are interested in.
+![User Journey Diagram](diagram/eagle-plant-library-user-journey.png)
