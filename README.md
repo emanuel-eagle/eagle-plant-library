@@ -7,6 +7,7 @@
 [Hardware](#hardware)</br>
 [How to Add a New Plant](#how-to-add-a-new-plant)</br>
 [How to User for Your Own Garden](#how-to-use-this-project-for-your-own-garden)</br>
+[Potential Improvements](#potential-improvements)</br>
 
 ## Introduction
 
@@ -32,3 +33,8 @@ The cloud-native backend is fairly straight forward. First, an AWS IoT Core brok
 
 ## How to Use This Project for Your Own Garden
 
+
+## Potential Improvements
+- Integration with other IoT devices at home (smart outlets, lights, etc.). This could bring value in providing automated solutions for when issues arise with plants. For example, if a plant isn't getting enough light, a smart outlet with a grow light plugged in could automatically turn on/off to bring light levels up to where the plant needs. Improvements such as this could also lead to automated watering or misting systems if done right. 
+- Automated alerts. Notifications sent to my phone if a plant needs more water, or if lighting isn't quite right. 
+- Advanced monitoring and data analysis. Collect additional datapoints beyond immediate environment data (collect weather data as well, or geographic data like which direction the plant is getting light from). These data can assist with generating future insights to assist with my plant care. For example, I could answer questions such as, in a east facing window, in the northeastern United States, Lemon-Lime Maranta typically need water every X days. Or more general questions, plants typically get X% less light in an east facing window in the fall vs. summer. I could write blog posts in the future to help fellow plant parents with these data. 
